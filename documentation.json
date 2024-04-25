@@ -1,0 +1,1508 @@
+{
+    "pipes": [
+        {
+            "name": "FindValueInConfigByLangPipe",
+            "id": "pipe-FindValueInConfigByLangPipe-f39180bd1fa0220de2b7bea41b21924d0f23f00b549c913feb98ff253c8facf9eb18c0f3d008c8417c470b3222c46e642007e9b4890a98401151da32c524f37e",
+            "file": "src/stories/utils/pipes/find-value-in-config-by-lang.pipe.ts",
+            "type": "pipe",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "description": "",
+            "rawdescription": "\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "transform",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 7,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "standalone": false,
+            "ngname": "findValueInConfigByLang",
+            "sourceCode": "import { Pipe, PipeTransform } from '@angular/core';\r\n\r\n@Pipe({\r\n\tname: 'findValueInConfigByLang',\r\n})\r\nexport class FindValueInConfigByLangPipe implements PipeTransform {\r\n\ttransform(value: any): string {\r\n\t\tconst text: string =\r\n\t\t\tlocalStorage.getItem(value) ??\r\n\t\t\t'text not found in findValueInConfigByLangPipe';\r\n\r\n\t\treturn text;\r\n\t}\r\n}\r\n"
+        }
+    ],
+    "interfaces": [
+        {
+            "name": "ConfigBase",
+            "id": "interface-ConfigBase-91116837153230d21b6d88a4ec55de93cc7e42db1aaa9d230baafdf033904b9d36b45f7c4b55b68ee506a8cf60c5d3c301fc6827b8c486369f9bfc081a43067b",
+            "file": "src/stories/utils/models/config-by-lang-model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "interface ResponseSchema {\r\n  country: string;\r\n  message: string;\r\n  errorCode: number;\r\n  function: string;\r\n}\r\nexport interface TextsBase {\r\n  label: string;\r\n  type: string;\r\n  value: string;\r\n}\r\n\r\nexport interface DataConfigByLang {\r\n  lang: string;\r\n  locale: string;\r\n  currency: string;\r\n  deviceType: string;\r\n  text: Array<TextsBase>\r\n  questions: Array<string>;\r\n  frequencies: [Frequency];\r\n  documentTypes: [typesDocument];\r\n}\r\n\r\nexport interface ConfigByLang extends ResponseSchema {\r\n  data: DataConfigByLang;\r\n}\r\n\r\nexport interface DataConfigBase {\r\n  country: string;\r\n  lang: string;\r\n  deviceType: string;\r\n  textBase: [TextsBase];\r\n  domains: [string];\r\n}\r\n\r\nexport interface ConfigBase extends ResponseSchema {\r\n  data: [ DataConfigBase ];\r\n}\r\n\r\nexport interface Frequency {\r\n    name: string;\r\n    code: number;\r\n}\r\nexport interface typesDocument {\r\n    name: string;\r\n    code: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[DataConfigBase]",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": [
+                "ResponseSchema"
+            ]
+        },
+        {
+            "name": "ConfigByLang",
+            "id": "interface-ConfigByLang-91116837153230d21b6d88a4ec55de93cc7e42db1aaa9d230baafdf033904b9d36b45f7c4b55b68ee506a8cf60c5d3c301fc6827b8c486369f9bfc081a43067b",
+            "file": "src/stories/utils/models/config-by-lang-model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "interface ResponseSchema {\r\n  country: string;\r\n  message: string;\r\n  errorCode: number;\r\n  function: string;\r\n}\r\nexport interface TextsBase {\r\n  label: string;\r\n  type: string;\r\n  value: string;\r\n}\r\n\r\nexport interface DataConfigByLang {\r\n  lang: string;\r\n  locale: string;\r\n  currency: string;\r\n  deviceType: string;\r\n  text: Array<TextsBase>\r\n  questions: Array<string>;\r\n  frequencies: [Frequency];\r\n  documentTypes: [typesDocument];\r\n}\r\n\r\nexport interface ConfigByLang extends ResponseSchema {\r\n  data: DataConfigByLang;\r\n}\r\n\r\nexport interface DataConfigBase {\r\n  country: string;\r\n  lang: string;\r\n  deviceType: string;\r\n  textBase: [TextsBase];\r\n  domains: [string];\r\n}\r\n\r\nexport interface ConfigBase extends ResponseSchema {\r\n  data: [ DataConfigBase ];\r\n}\r\n\r\nexport interface Frequency {\r\n    name: string;\r\n    code: number;\r\n}\r\nexport interface typesDocument {\r\n    name: string;\r\n    code: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "data",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "DataConfigByLang",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": [
+                "ResponseSchema"
+            ]
+        },
+        {
+            "name": "DataConfigBase",
+            "id": "interface-DataConfigBase-91116837153230d21b6d88a4ec55de93cc7e42db1aaa9d230baafdf033904b9d36b45f7c4b55b68ee506a8cf60c5d3c301fc6827b8c486369f9bfc081a43067b",
+            "file": "src/stories/utils/models/config-by-lang-model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "interface ResponseSchema {\r\n  country: string;\r\n  message: string;\r\n  errorCode: number;\r\n  function: string;\r\n}\r\nexport interface TextsBase {\r\n  label: string;\r\n  type: string;\r\n  value: string;\r\n}\r\n\r\nexport interface DataConfigByLang {\r\n  lang: string;\r\n  locale: string;\r\n  currency: string;\r\n  deviceType: string;\r\n  text: Array<TextsBase>\r\n  questions: Array<string>;\r\n  frequencies: [Frequency];\r\n  documentTypes: [typesDocument];\r\n}\r\n\r\nexport interface ConfigByLang extends ResponseSchema {\r\n  data: DataConfigByLang;\r\n}\r\n\r\nexport interface DataConfigBase {\r\n  country: string;\r\n  lang: string;\r\n  deviceType: string;\r\n  textBase: [TextsBase];\r\n  domains: [string];\r\n}\r\n\r\nexport interface ConfigBase extends ResponseSchema {\r\n  data: [ DataConfigBase ];\r\n}\r\n\r\nexport interface Frequency {\r\n    name: string;\r\n    code: number;\r\n}\r\nexport interface typesDocument {\r\n    name: string;\r\n    code: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "country",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "deviceType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "domains",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[string]",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "lang",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 30
+                },
+                {
+                    "name": "textBase",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[TextsBase]",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "DataConfigByLang",
+            "id": "interface-DataConfigByLang-91116837153230d21b6d88a4ec55de93cc7e42db1aaa9d230baafdf033904b9d36b45f7c4b55b68ee506a8cf60c5d3c301fc6827b8c486369f9bfc081a43067b",
+            "file": "src/stories/utils/models/config-by-lang-model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "interface ResponseSchema {\r\n  country: string;\r\n  message: string;\r\n  errorCode: number;\r\n  function: string;\r\n}\r\nexport interface TextsBase {\r\n  label: string;\r\n  type: string;\r\n  value: string;\r\n}\r\n\r\nexport interface DataConfigByLang {\r\n  lang: string;\r\n  locale: string;\r\n  currency: string;\r\n  deviceType: string;\r\n  text: Array<TextsBase>\r\n  questions: Array<string>;\r\n  frequencies: [Frequency];\r\n  documentTypes: [typesDocument];\r\n}\r\n\r\nexport interface ConfigByLang extends ResponseSchema {\r\n  data: DataConfigByLang;\r\n}\r\n\r\nexport interface DataConfigBase {\r\n  country: string;\r\n  lang: string;\r\n  deviceType: string;\r\n  textBase: [TextsBase];\r\n  domains: [string];\r\n}\r\n\r\nexport interface ConfigBase extends ResponseSchema {\r\n  data: [ DataConfigBase ];\r\n}\r\n\r\nexport interface Frequency {\r\n    name: string;\r\n    code: number;\r\n}\r\nexport interface typesDocument {\r\n    name: string;\r\n    code: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "currency",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                },
+                {
+                    "name": "deviceType",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 17
+                },
+                {
+                    "name": "documentTypes",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[typesDocument]",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                },
+                {
+                    "name": "frequencies",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "[Frequency]",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "lang",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 14
+                },
+                {
+                    "name": "locale",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 15
+                },
+                {
+                    "name": "questions",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Array<string>",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "text",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Array<TextsBase>",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "Frequency",
+            "id": "interface-Frequency-91116837153230d21b6d88a4ec55de93cc7e42db1aaa9d230baafdf033904b9d36b45f7c4b55b68ee506a8cf60c5d3c301fc6827b8c486369f9bfc081a43067b",
+            "file": "src/stories/utils/models/config-by-lang-model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "interface ResponseSchema {\r\n  country: string;\r\n  message: string;\r\n  errorCode: number;\r\n  function: string;\r\n}\r\nexport interface TextsBase {\r\n  label: string;\r\n  type: string;\r\n  value: string;\r\n}\r\n\r\nexport interface DataConfigByLang {\r\n  lang: string;\r\n  locale: string;\r\n  currency: string;\r\n  deviceType: string;\r\n  text: Array<TextsBase>\r\n  questions: Array<string>;\r\n  frequencies: [Frequency];\r\n  documentTypes: [typesDocument];\r\n}\r\n\r\nexport interface ConfigByLang extends ResponseSchema {\r\n  data: DataConfigByLang;\r\n}\r\n\r\nexport interface DataConfigBase {\r\n  country: string;\r\n  lang: string;\r\n  deviceType: string;\r\n  textBase: [TextsBase];\r\n  domains: [string];\r\n}\r\n\r\nexport interface ConfigBase extends ResponseSchema {\r\n  data: [ DataConfigBase ];\r\n}\r\n\r\nexport interface Frequency {\r\n    name: string;\r\n    code: number;\r\n}\r\nexport interface typesDocument {\r\n    name: string;\r\n    code: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "code",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 42
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "ResponseSchema",
+            "id": "interface-ResponseSchema-91116837153230d21b6d88a4ec55de93cc7e42db1aaa9d230baafdf033904b9d36b45f7c4b55b68ee506a8cf60c5d3c301fc6827b8c486369f9bfc081a43067b",
+            "file": "src/stories/utils/models/config-by-lang-model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "interface ResponseSchema {\r\n  country: string;\r\n  message: string;\r\n  errorCode: number;\r\n  function: string;\r\n}\r\nexport interface TextsBase {\r\n  label: string;\r\n  type: string;\r\n  value: string;\r\n}\r\n\r\nexport interface DataConfigByLang {\r\n  lang: string;\r\n  locale: string;\r\n  currency: string;\r\n  deviceType: string;\r\n  text: Array<TextsBase>\r\n  questions: Array<string>;\r\n  frequencies: [Frequency];\r\n  documentTypes: [typesDocument];\r\n}\r\n\r\nexport interface ConfigByLang extends ResponseSchema {\r\n  data: DataConfigByLang;\r\n}\r\n\r\nexport interface DataConfigBase {\r\n  country: string;\r\n  lang: string;\r\n  deviceType: string;\r\n  textBase: [TextsBase];\r\n  domains: [string];\r\n}\r\n\r\nexport interface ConfigBase extends ResponseSchema {\r\n  data: [ DataConfigBase ];\r\n}\r\n\r\nexport interface Frequency {\r\n    name: string;\r\n    code: number;\r\n}\r\nexport interface typesDocument {\r\n    name: string;\r\n    code: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "country",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "errorCode",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "function",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "message",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 3
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "TextsBase",
+            "id": "interface-TextsBase-91116837153230d21b6d88a4ec55de93cc7e42db1aaa9d230baafdf033904b9d36b45f7c4b55b68ee506a8cf60c5d3c301fc6827b8c486369f9bfc081a43067b",
+            "file": "src/stories/utils/models/config-by-lang-model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "interface ResponseSchema {\r\n  country: string;\r\n  message: string;\r\n  errorCode: number;\r\n  function: string;\r\n}\r\nexport interface TextsBase {\r\n  label: string;\r\n  type: string;\r\n  value: string;\r\n}\r\n\r\nexport interface DataConfigByLang {\r\n  lang: string;\r\n  locale: string;\r\n  currency: string;\r\n  deviceType: string;\r\n  text: Array<TextsBase>\r\n  questions: Array<string>;\r\n  frequencies: [Frequency];\r\n  documentTypes: [typesDocument];\r\n}\r\n\r\nexport interface ConfigByLang extends ResponseSchema {\r\n  data: DataConfigByLang;\r\n}\r\n\r\nexport interface DataConfigBase {\r\n  country: string;\r\n  lang: string;\r\n  deviceType: string;\r\n  textBase: [TextsBase];\r\n  domains: [string];\r\n}\r\n\r\nexport interface ConfigBase extends ResponseSchema {\r\n  data: [ DataConfigBase ];\r\n}\r\n\r\nexport interface Frequency {\r\n    name: string;\r\n    code: number;\r\n}\r\nexport interface typesDocument {\r\n    name: string;\r\n    code: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "label",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 8
+                },
+                {
+                    "name": "type",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                },
+                {
+                    "name": "value",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 10
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "typesDocument",
+            "id": "interface-typesDocument-91116837153230d21b6d88a4ec55de93cc7e42db1aaa9d230baafdf033904b9d36b45f7c4b55b68ee506a8cf60c5d3c301fc6827b8c486369f9bfc081a43067b",
+            "file": "src/stories/utils/models/config-by-lang-model.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "interface ResponseSchema {\r\n  country: string;\r\n  message: string;\r\n  errorCode: number;\r\n  function: string;\r\n}\r\nexport interface TextsBase {\r\n  label: string;\r\n  type: string;\r\n  value: string;\r\n}\r\n\r\nexport interface DataConfigByLang {\r\n  lang: string;\r\n  locale: string;\r\n  currency: string;\r\n  deviceType: string;\r\n  text: Array<TextsBase>\r\n  questions: Array<string>;\r\n  frequencies: [Frequency];\r\n  documentTypes: [typesDocument];\r\n}\r\n\r\nexport interface ConfigByLang extends ResponseSchema {\r\n  data: DataConfigByLang;\r\n}\r\n\r\nexport interface DataConfigBase {\r\n  country: string;\r\n  lang: string;\r\n  deviceType: string;\r\n  textBase: [TextsBase];\r\n  domains: [string];\r\n}\r\n\r\nexport interface ConfigBase extends ResponseSchema {\r\n  data: [ DataConfigBase ];\r\n}\r\n\r\nexport interface Frequency {\r\n    name: string;\r\n    code: number;\r\n}\r\nexport interface typesDocument {\r\n    name: string;\r\n    code: string;\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "code",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 46
+                },
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 45
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        },
+        {
+            "name": "User",
+            "id": "interface-User-d4821beac0e4a852e513391b7470981c4353fdd95a18628bb68136c8695b489ee15b926e2e5031bc26cf30e1508e0a362c3ee13a06734702b4d15af140e485d5",
+            "file": "src/stories/user.ts",
+            "deprecated": false,
+            "deprecationMessage": "",
+            "type": "interface",
+            "sourceCode": "export interface User {\n  name: string;\n}\n",
+            "properties": [
+                {
+                    "name": "name",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 2
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 171,
+            "methods": [],
+            "extends": []
+        }
+    ],
+    "injectables": [],
+    "guards": [],
+    "interceptors": [],
+    "classes": [],
+    "directives": [],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-f6e0a4165d90cd59f3e708780d9a8341fa358b7687dd565495660007b0653a064c738c99f2fcf4933a6716ace42cccf066ae403b54d7fe0acdb9b2879c092f10",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [],
+            "styles": [],
+            "template": "<h1>Welcome to {{title}}!</h1>\n\n<router-outlet />\n",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'angular-latest'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 16
+                }
+            ],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "RouterOutlet"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\r\nimport { RouterOutlet } from '@angular/router';\r\n\r\n@Component({\r\n  selector: 'app-root',\r\n  standalone: true,\r\n  imports: [RouterOutlet],\r\n  template: `\r\n    <h1>Welcome to {{title}}!</h1>\r\n\r\n    <router-outlet />\r\n  `,\r\n  styles: [],\r\n})\r\nexport class AppComponent {\r\n  title = 'angular-latest';\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": "",
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-86e2311c54fbca7431c12e070d0fd5b0ebe343eec0553a392f182ba0e04a8f86613233d26ee47718fd0e7a65078f580c76a1fcc928ce55de81193d6618025bc4",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nWhat background color to use\n",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 29,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "pos": 798,
+                            "end": 811,
+                            "flags": 16842752,
+                            "modifierFlagsCache": 0,
+                            "transformFlags": 0,
+                            "kind": 334,
+                            "tagName": {
+                                "pos": 799,
+                                "end": 807,
+                                "flags": 16842752,
+                                "modifierFlagsCache": 0,
+                                "transformFlags": 0,
+                                "kind": 80,
+                                "escapedText": "required"
+                            },
+                            "comment": ""
+                        }
+                    ],
+                    "rawdescription": "\n\nButton contents\n\n",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 43,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nIs this the principal call to action on the page?\n",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 23,
+                    "type": "boolean",
+                    "decorators": []
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nHow large should the button be?\n",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 35,
+                    "type": "\"small\" | \"medium\" | \"large\"",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "rawdescription": "\n\nOptional click handler\n",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 49,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { CommonModule } from '@angular/common';\nimport { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  standalone: true,\n  imports: [CommonModule],\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 51
+                    }
+                }
+            }
+        },
+        {
+            "name": "CameraComponent",
+            "id": "component-CameraComponent-d355094853537f5eb6a22745319587dc02e17327fcc0a0c2ad65e853076839a9d7d59817995ae375008b303583cabd7c1536315f5ac48bb867850a9d46c7ca38",
+            "file": "src/stories/organism/camera/camera.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-camera",
+            "styleUrls": [
+                "./camera.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./camera.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "storeId",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 24,
+                    "type": "string",
+                    "decorators": []
+                },
+                {
+                    "name": "typeImage",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 23,
+                    "type": "string",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "cameraError",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 27,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "closeCamera",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 28,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "eventSendPhoto",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 26,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "modalClose",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 29,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "browser",
+                    "defaultValue": "<any>navigator",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 31
+                },
+                {
+                    "name": "cameraOn",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 32
+                },
+                {
+                    "name": "cameraPosition",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 39
+                },
+                {
+                    "name": "canvas",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 21,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'canvas'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                },
+                {
+                    "name": "errorMessage",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 34
+                },
+                {
+                    "name": "errorRed",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 38
+                },
+                {
+                    "name": "isMobile",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 40
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "true",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 33
+                },
+                {
+                    "name": "loadingPicture",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 36
+                },
+                {
+                    "name": "photoSize",
+                    "defaultValue": "{ width: 635, height: 480 }",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "optional": false,
+                    "description": "",
+                    "line": 41
+                },
+                {
+                    "name": "showError",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 35
+                },
+                {
+                    "name": "showErrorCamera",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 37
+                },
+                {
+                    "name": "video",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef",
+                    "optional": false,
+                    "description": "",
+                    "line": 20,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'video'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "again",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 123,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "capture",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 98,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "close",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 140,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "closeError",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 147,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "closeModal",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 156,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "dataURLtoFile",
+                    "args": [
+                        {
+                            "name": "dataurl",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "any",
+                    "typeParameters": [],
+                    "line": 113,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dataurl",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "definePosition",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 89,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "initCamera",
+                    "args": [
+                        {
+                            "name": "config",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 61,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        123
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "config",
+                            "type": "any",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 47,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "modifierKind": [
+                        125
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 152,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "savePhotoUser",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 130,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "validateDevice",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "string",
+                    "typeParameters": [],
+                    "line": 160,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": false,
+            "imports": [],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';\r\n\r\nconst cameraPosition = {\r\n\tenvironment: 'environment',\r\n\tuser: 'user'\r\n};\r\n/* \r\n\tdictionary value.\r\n\tDBConfig_co > catalogTexts > 📄 deviceType: \"CHATBOT\"\r\n\r\n\t- dictionaryStoreId as bss_person_store_id\r\n*/\r\n\r\n@Component({\r\n\tselector: 'app-camera',\r\n\ttemplateUrl: './camera.component.html',\r\n\tstyleUrls: ['./camera.component.scss'],\r\n})\r\nexport class CameraComponent implements OnDestroy {\r\n\t@ViewChild('video') video!: ElementRef;\r\n\t@ViewChild('canvas') canvas!: ElementRef;\r\n\r\n\t@Input() typeImage = '';\r\n\t@Input() storeId = '';\r\n\r\n  @Output() eventSendPhoto = new EventEmitter();\r\n  @Output() cameraError = new EventEmitter();\r\n  @Output() closeCamera = new EventEmitter();\r\n  @Output() modalClose = new EventEmitter();\r\n\r\n  browser = <any>navigator;\r\n  cameraOn = true;\r\n  loading = true;\r\n  errorMessage: any;\r\n  showError = false;\r\n\tloadingPicture = false;\r\n\tshowErrorCamera = false;\r\n\terrorRed = '';\r\n\tcameraPosition: any;\r\n\tisMobile = false;\r\n\tphotoSize = { width: 635, height: 480 };\r\n\r\n\tconstructor() {\r\n\t\tthis.cameraPosition = cameraPosition.environment;\r\n\t}\r\n\r\n\tpublic ngAfterViewInit() {\r\n\t\tthis.cameraPosition = this.validateDevice();\r\n\r\n\t\tthis.initCamera({\r\n\t\t\tvideo: {\r\n\t\t\t\tfacingMode: this.cameraPosition,\r\n\t\t\t},\r\n\t\t\taudio: false,\r\n\t\t});\r\n\r\n    this.canvas.nativeElement.width = this.photoSize.width;\r\n    this.canvas.nativeElement.height = this.photoSize.height;\r\n\t}\r\n\r\n\tprivate initCamera(config: any) {\r\n\t\tthis.browser.getUserMedia =\r\n\t\t\tthis.browser.getUserMedia ||\r\n\t\t\tthis.browser.webkitGetUserMedia ||\r\n\t\t\tthis.browser.mozGetUserMedia ||\r\n\t\t\tthis.browser.msGetUserMedia;\r\n\r\n\t\tif (this.browser.mediaDevices && this.browser.mediaDevices.getUserMedia) {\r\n\t\t\tthis.browser.mediaDevices.getUserMedia(config).then(\r\n\t\t\t\t(stream: any) => {\r\n\t\t\t\t\tthis.showErrorCamera = false;\r\n\t\t\t\t\tthis.video.nativeElement.srcObject = stream;\r\n\t\t\t\t\tthis.video.nativeElement.play().then(() => {\r\n\t\t\t\t\t\twindow.dispatchEvent(new Event('resize'));\r\n\t\t\t\t\t\tthis.loading = false;\r\n\t\t\t\t\t});\r\n\t\t\t\t},\r\n\t\t\t\t(error: any) => {\r\n\t\t\t\t\tthis.showErrorCamera = true;\r\n\t\t\t\t\tthis.eventSendPhoto.emit(false);\r\n\t\t\t\t\tthis.cameraError.emit(error);\r\n\t\t\t\t}\r\n\t\t\t);\r\n\t\t} else {\r\n\t\t\tthis.cameraError.emit(true);\r\n\t\t}\r\n\t}\r\n\r\n\tdefinePosition() {\r\n\t\tthis.close();\r\n\t\tthis.cameraPosition =\r\n\t\t\tthis.cameraPosition === cameraPosition.user\r\n\t\t\t\t? cameraPosition.environment\r\n\t\t\t\t: cameraPosition.user;\r\n\t\tthis.initCamera({ video: { facingMode: this.cameraPosition }, audio: false });\r\n\t}\r\n\r\n\tpublic capture() {\r\n\t\tthis.cameraOn = false;\r\n    this.video.nativeElement.pause();\r\n\r\n\t\tthis.canvas.nativeElement\r\n\t\t\t.getContext('2d')\r\n\t\t\t.drawImage(\r\n\t\t\t\tthis.video.nativeElement,\r\n\t\t\t\t0,\r\n\t\t\t\t0,\r\n        this.photoSize.width,\r\n        this.photoSize.height\r\n\t\t\t);\r\n\t}\r\n\r\n\tprivate dataURLtoFile(dataurl: any) {\r\n\t\tvar arr = dataurl.split(','),\r\n\t\t\tmime = arr[0].match(/:(.*?);/)[1],\r\n\t\t\tbstr = atob(arr[1]),\r\n\t\t\tn = bstr.length,\r\n\t\t\tu8arr = new Uint8Array(n);\r\n\t\twhile (n--) u8arr[n] = bstr.charCodeAt(n);\r\n\t\treturn new File([u8arr], 'filename', { type: mime });\r\n\t}\r\n\r\n\tpublic again() {\r\n\t\tthis.cameraOn = true;\r\n    this.video.nativeElement.play().then(() => {\r\n      window.dispatchEvent(new Event('resize'));\r\n    });\r\n\t}\r\n\r\n\tsavePhotoUser() {\r\n\t\tthis.loadingPicture = true;\r\n\t\tthis.errorRed = 'false';\r\n    const data = this.canvas.nativeElement.toDataURL('image/png');\r\n\r\n\t\tconst file = this.dataURLtoFile(data);\r\n\t\tthis.eventSendPhoto.emit(file);\r\n\t\tthis.close();\r\n\t}\r\n\r\n\tclose() {\r\n\t\tthis.closeCamera.emit(true);\r\n\t\tif (this.video && this.video.nativeElement.srcObject) {\r\n\t\t\tthis.video.nativeElement.srcObject.getTracks()[0].stop();\r\n\t\t}\r\n\t}\r\n\r\n\tcloseError() {\r\n\t\tthis.loadingPicture = false;\r\n\t\tthis.close();\r\n\t}\r\n\r\n\tngOnDestroy() {\r\n\t\tthis.close();\r\n\t}\r\n\r\n\tcloseModal() {\r\n\t\tthis.modalClose.emit(true);\r\n\t}\r\n\r\n  validateDevice() {\r\n    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);\r\n\r\n    const dictionaryStoreId = '5e7cfb39ead1af0edcfb1241';\r\n\r\n    if (this.storeId === '' || dictionaryStoreId !== this.storeId) {\r\n      return cameraPosition.environment;\r\n    }\r\n\r\n    if (isMobile) {\r\n      return cameraPosition.user;\r\n    }\r\n\r\n    return cameraPosition.environment;\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "@import \"./variables.scss\";\r\n\r\n$bg-color: linear-gradient(to right, #477cff -30%, #072a81 100%);\r\n$lighter-gray: #f6f6f6;\r\n$sprite: url(#{$sc-icon-sprite-svg});\r\n\r\nhtml,\r\nbody {\r\n  animation: fadein 2s;\r\n}\r\n\r\n.loadingPicture {\r\n  cursor: wait !important;\r\n}\r\n\r\n@keyframes fadein {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n\r\n  to {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n@keyframes growup {\r\n  from {\r\n    opacity: 0;\r\n  }\r\n\r\n  to {\r\n    opacity: 1;\r\n  }\r\n}\r\n\r\n.content-camera {\r\n  position: relative;\r\n\r\n  &.off-visibility {\r\n    visibility: hidden;\r\n  }\r\n\r\n  &__container {\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    display: flex;\r\n    flex-direction: column;\r\n    justify-content: space-between;\r\n    align-items: center;\r\n\r\n    margin: 0;\r\n  }\r\n\r\n  .sc-water-mark {\r\n    width: 100%;\r\n    height: 70%;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: flex-start;\r\n    margin: 0;\r\n    padding-top: 60px;\r\n\r\n    &__container {\r\n      width: 100%;\r\n      max-width: 500px;\r\n      display: flex;\r\n      justify-content: center;\r\n      align-items: flex-start;\r\n      margin: 0;\r\n      aspect-ratio: 16/10.3;\r\n      position: relative;\r\n      transform: rotate(90deg) translate(4%, 59%) scale(1.2);\r\n      transform-origin: bottom;\r\n    }\r\n\r\n    &__text {\r\n      color: white;\r\n      padding: 34px 22px 22px;\r\n      margin: 0;\r\n      height: 10px;\r\n      position: absolute;\r\n      max-width: 422px;\r\n    }\r\n\r\n    &__icon {\r\n      width: 100%;\r\n      height: 100%;\r\n    }\r\n\r\n    @media screen and (min-width: 420px) {\r\n      &__container {\r\n        transform: rotate(90deg) translate(4%, 59%) scale(1.2);\r\n        transform-origin: bottom;\r\n      }\r\n    }\r\n\r\n    @media screen and (min-width: 576px) {\r\n      &__container {\r\n        transform: none;\r\n        transform-origin: none;\r\n      }\r\n    }\r\n\r\n    @media screen and (min-width: 768px) {\r\n      height: 100%;\r\n    }\r\n\r\n  }\r\n\r\n  a.button {\r\n    position: inherit;\r\n    padding: 0px 6.9px;\r\n    border-radius: 50%;\r\n    color: #ffffff;\r\n    font-size: 14px;\r\n    font-weight: 600;\r\n    background-color: rgba(87, 145, 255, 0.4);\r\n    cursor: pointer;\r\n    aspect-ratio: 1;\r\n    display: flex !important;\r\n    align-items: center;\r\n    justify-content: center;\r\n    min-width: 67px;\r\n    transform: rotate(90deg);\r\n\r\n    @media screen and (min-width: 576px) {\r\n      transform: none;\r\n    }\r\n  }\r\n\r\n  .over-buttons {\r\n    bottom: 6%;\r\n    cursor: pointer;\r\n    position: absolute;\r\n    width: 100%;\r\n    left: 0;\r\n    display: flex;\r\n    justify-content: flex-start;\r\n    gap: 5%;\r\n    padding: 0px 16px;\r\n\r\n    .rectangle-shadow {\r\n      text-align: center;\r\n      position: absolute;\r\n      bottom: 0px;\r\n      height: 160px;\r\n      width: 600px;\r\n      background: rgba(26, 26, 26, 0.474);\r\n      border-bottom-left-radius: 1em;\r\n      border-bottom-right-radius: 1em;\r\n\r\n      .text-shadow {\r\n        color: white;\r\n      }\r\n\r\n      @media screen and (max-width: 768px) {\r\n        justify-content: center;\r\n      }\r\n    }\r\n\r\n    a.right {\r\n      position: static;\r\n      display: inline-block;\r\n      margin: 1.2em;\r\n      margin-right: 1em;\r\n    }\r\n\r\n    a.left {\r\n      position: static;\r\n      display: inline-block;\r\n      margin: 1.2em;\r\n    }\r\n\r\n    @media screen and (min-width: 576px) {\r\n      justify-content: center;\r\n      gap: 18%;\r\n      padding: 0px 14px;\r\n    }\r\n  }\r\n\r\n  .over-button {\r\n    cursor: pointer;\r\n    width: 100%;\r\n    display: flex;\r\n    justify-content: flex-start;\r\n    padding-bottom: 32px;\r\n    padding-left: 35px;\r\n  }\r\n\r\n  .sc-icon-camera, .sc-icon-rotate-camera {\r\n    background-image: url(\"#{$sc-icon-camera}\");\r\n    background-repeat: no-repeat;\r\n    background-size: contain;\r\n    background-position-x: center;\r\n    display: inline-block;\r\n    padding: 34px;\r\n    transform: rotate(90deg);\r\n  }\r\n\r\n  .sc-icon-rotate-camera {\r\n    background-image: url(\"#{$sc-icon-rotate-camera}\");\r\n    position: absolute;\r\n    right: 25px;\r\n  }\r\n\r\n  @media screen and (min-width: 576px) {\r\n    .over-button {\r\n      justify-content: center;\r\n      padding-left: 0px;\r\n    }\r\n\r\n    .sc-icon-camera {\r\n      transform: none;\r\n    }\r\n  }\r\n\r\n  &[type=\"fileImageDocumentBack\"] {\r\n    .sc-water-mark {\r\n      &__icon {\r\n        background-image: url(\"#{$sc-icon-back-document}\");\r\n        background-repeat: no-repeat;\r\n        background-size: contain;\r\n        background-position-x: center;\r\n      }\r\n    }\r\n  }\r\n\r\n  &[type=\"fileImageDocumentFront\"] {\r\n    .sc-water-mark {\r\n      &__icon {\r\n        background-image: url(\"#{$sc-icon-front-document}\");\r\n        background-repeat: no-repeat;\r\n        background-size: contain;\r\n        background-position-x: center;\r\n      }\r\n    }\r\n  }\r\n\r\n  &[type=\"fileImage\"] {\r\n    .sc-water-mark {\r\n      &__container {\r\n        max-width: 250px;\r\n        aspect-ratio: 11/16;\r\n        transform: none !important;\r\n        transform-origin: none !important;\r\n      }\r\n\r\n      &__icon {\r\n        background-image: url(\"#{$sc-icon-water-mark-face}\");\r\n        background-repeat: no-repeat;\r\n        background-size: contain;\r\n        background-position-x: center;\r\n      }\r\n    }\r\n\r\n    a.button {\r\n      transform: none;\r\n    }\r\n\r\n    .over-buttons {\r\n      justify-content: space-between;\r\n      gap: 0;\r\n    }\r\n\r\n    .over-button {\r\n      justify-content: center;\r\n      padding-left: 0px;\r\n    }\r\n\r\n    .sc-icon-camera {\r\n      transform: none;\r\n    }\r\n\r\n    .sc-icon-rotate-camera {\r\n      transform: none;\r\n    }\r\n\r\n    @media screen and (min-width: 576px) {\r\n      .over-buttons {\r\n        justify-content: center;\r\n      }\r\n    }\r\n\r\n    @media screen and (min-width: 768px) {\r\n      .sc-water-mark {\r\n        max-width: 315px;\r\n      }\r\n    }\r\n  }\r\n}\r\n\r\nvideo,\r\ncanvas {\r\n  width: 100vw;\r\n  height: 100vh;\r\n  object-fit: cover;\r\n\r\n  @media screen and (min-width: 768px) {\r\n    width: 96vw;\r\n    height: 96vh;\r\n    border-radius: 25px;\r\n  }\r\n}\r\n\r\n.blue {\r\n  color: white !important;\r\n  background-color: rgba(0, 54, 156, 1) !important;\r\n}\r\n\r\n.sc-icon-loading {\r\n  background: url(#{$sc-loading-gif}) no-repeat;\r\n  left: 45%;\r\n  padding: 39px;\r\n  position: absolute;\r\n  top: 40%;\r\n}\r\n\r\n.sc-icon {\r\n  background: $sprite;\r\n  padding: 5%;\r\n\r\n  &.close-popup {\r\n    background-position: 9.4% 92.5%;\r\n    cursor: pointer;\r\n    position: absolute;\r\n    right: 2%;\r\n    padding: 3.5%;\r\n  }\r\n}\r\n\r\n.ErrorCamera {\r\n  background: #ffffff;\r\n  padding: 40px 20px;\r\n  border-radius: 12px;\r\n  margin: auto 15px;\r\n  width: 400px;\r\n\r\n  .ErrorCamera-header {\r\n    .ErrorCamera-header-img {\r\n      background-image: url($sc-icon-alert-camera);\r\n      width: 54px;\r\n      height: 54px;\r\n      margin: auto;\r\n    }\r\n\r\n    p {\r\n      margin: 0px;\r\n      color: $user-bubble-color;\r\n      font: bold;\r\n      font-weight: 700;\r\n      font-size: 26px;\r\n    }\r\n  }\r\n\r\n  .ErrorCamera-body {\r\n    margin: 1.2rem 0;\r\n\r\n    p {\r\n      margin: 0;\r\n    }\r\n  }\r\n\r\n  .ErrorCamera-footer {\r\n    button {\r\n      background-color: $user-bubble-color;\r\n      color: $white;\r\n\r\n      &:hover {\r\n        background-color: $dark-blue;\r\n      }\r\n    }\r\n  }\r\n\r\n  @media screen and (max-width: 768px) {\r\n    height: 80%;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./camera.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 41
+            },
+            "extends": [],
+            "implements": [
+                "OnDestroy"
+            ],
+            "templateData": "<div #cameradiv class=\"camera-bot\" *ngIf=\"!showErrorCamera\">\r\n\r\n  <i [hidden]=\"! loading\" id=\"loading\" class=\"sc-icon-loading\"></i>\r\n\r\n  <div [class.off-visibility]=\"loading\" [attr.type]=\"typeImage\" class=\"content-camera\">\r\n    <div>\r\n      <video #video id=\"video\" autoplay></video>\r\n      <div class=\"content-camera__container\">\r\n        <div class=\"sc-water-mark row\" *ngIf=\"typeImage\">\r\n          <div class=\"sc-water-mark__container\">\r\n            <span class=\"sc-water-mark__text\">{{(typeImage == 'fileImageDocumentFront'? 'lbl_indication_document_front'\r\n              :\r\n              typeImage == 'fileImageDocumentBack'? 'lbl_indication_document_back' : '') |\r\n              findValueInConfigByLang}}</span>\r\n            <i class=\"sc-water-mark__icon\"></i>\r\n          </div>\r\n        </div>\r\n        <div class=\"over-button\" [hidden]=\"!cameraOn\">\r\n          <i id=\"capture\" class=\"sc-icon-camera\" (click)=\"capture()\"></i>\r\n          <i *ngIf=\"isMobile\" id=\"capture\" class=\"sc-icon-rotate-camera\" (click)=\"definePosition()\"></i>\r\n        </div>\r\n        <div class=\"over-buttons\" [hidden]=\"cameraOn\">\r\n          <a id=\"repeatPicture\" class=\"button right\" (click)=\"again()\">{{'btn_text_repeat_picture' |\r\n            findValueInConfigByLang}}</a>\r\n          <a id=\"savePicture\" class=\"button left blue\" (click)=\"savePhotoUser()\">{{'btn_text_send_form' |\r\n            findValueInConfigByLang}}</a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div [hidden]=\"true\" class=\"img-container\">\r\n      <canvas #canvas id=\"canvas\" width=\"635px\" height=\"480px\"></canvas>\r\n      <div class=\"content-camera__container\">\r\n        <div class=\"sc-water-mark row\" *ngIf=\"typeImage\">\r\n          <div class=\"sc-water-mark__container\">\r\n            <span class=\"sc-water-mark__text\">{{(typeImage == 'fileImageDocumentFront'? 'lbl_indication_document_front'\r\n              :\r\n              typeImage == 'fileImageDocumentBack'? 'lbl_indication_document_back' : '') |\r\n              findValueInConfigByLang}}</span>\r\n            <i class=\"sc-water-mark__icon\"></i>\r\n          </div>\r\n        </div>\r\n        <div class=\"over-buttons\">\r\n          <a id=\"repeatPicture\" class=\"button right\" (click)=\"again()\">{{'btn_text_repeat_picture' |\r\n            findValueInConfigByLang}}</a>\r\n          <a id=\"savePicture\" class=\"button left blue\" (click)=\"savePhotoUser()\">{{'btn_text_send_form' |\r\n            findValueInConfigByLang}}</a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n\r\n<div *ngIf=\"showErrorCamera\" class=\"ErrorCamera\">\r\n  <div class=\"ErrorCamera-header\">\r\n    <div class=\"ErrorCamera-header-img\"></div>\r\n    <p>¡Ups!</p>\r\n    <p>Nos hace falta una</p>\r\n    <p>Herramienta</p>\r\n  </div>\r\n  <div class=\"ErrorCamera-body\">\r\n    <p>Debes contar con una</p>\r\n    <p>cámara para continuar</p>\r\n  </div>\r\n  <div class=\"ErrorCamera-footer\">\r\n    <button class=\"btn\" (click)=\"closeModal()\">Entendido</button>\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-cad94b233ec8e80ceb541e7972c5f9737e08237b4e137112f3987ca48ee0cce5c0d57798d41daa5d4d24d6bdbb2df1606ab68cca2aa0a1785e38f99f3cac0729",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 69,
+                    "type": "User | null",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 78,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 72,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 75,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "ButtonComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { ButtonComponent } from './button.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-header',\n  standalone: true,\n  imports: [CommonModule, ButtonComponent],\n  template: `<header>\n    <div class=\"storybook-header\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <div *ngIf=\"user\">\n          <span class=\"welcome\">\n            Welcome, <b>{{ user.name }}</b\n            >!\n          </span>\n          <storybook-button\n            *ngIf=\"user\"\n            size=\"small\"\n            (onClick)=\"onLogout.emit($event)\"\n            label=\"Log out\"\n          ></storybook-button>\n        </div>\n        <div *ngIf=\"!user\">\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            class=\"margin-left\"\n            (onClick)=\"onLogin.emit($event)\"\n            label=\"Log in\"\n          ></storybook-button>\n          <storybook-button\n            *ngIf=\"!user\"\n            size=\"small\"\n            [primary]=\"true\"\n            class=\"margin-left\"\n            (onClick)=\"onCreateAccount.emit($event)\"\n            label=\"Sign up\"\n          ></storybook-button>\n        </div>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport class HeaderComponent {\n  @Input()\n  user: User | null = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-header {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\n.storybook-header svg {\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header h1 {\n  font-weight: 700;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-header button + button {\n  margin-left: 10px;\n}\n\n.storybook-header .welcome {\n  color: #333;\n  font-size: 14px;\n  margin-right: 10px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-d32b0f19628254ea3fc5526c4d4564ada1cc83cf936759006d90a46f5874b02a3359e331bddda20b22e74a616a6443c660602ba74dd38ebe1160759e0de6f7ba",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "User | null",
+                    "optional": false,
+                    "description": "",
+                    "line": 69
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "doCreateAccount",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 79,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogin",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 75,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "doLogout",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 71,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "HeaderComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\nimport { HeaderComponent } from './header.component';\nimport type { User } from './user';\n\n@Component({\n  selector: 'storybook-page',\n  standalone: true,\n  imports: [CommonModule, HeaderComponent],\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"doLogout()\"\n      (onLogin)=\"doLogin()\"\n      (onCreateAccount)=\"doCreateAccount()\"\n    ></storybook-header>\n    <section class=\"storybook-page\">\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://storybook.js.org/tutorials/\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Storybook tutorials\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\"> docs </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport class PageComponent {\n  user: User | null = null;\n\n  doLogout() {\n    this.user = null;\n  }\n\n  doLogin() {\n    this.user = { name: 'Jane Doe' };\n  }\n\n  doCreateAccount() {\n    this.user = { name: 'Jane Doe' };\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-page {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\n.storybook-page h2 {\n  font-weight: 700;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.storybook-page p {\n  margin: 1em 0;\n}\n\n.storybook-page a {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\n.storybook-page ul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\n.storybook-page li {\n  margin-bottom: 8px;\n}\n\n.storybook-page .tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.storybook-page .tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.storybook-page .tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.storybook-page .tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": "",
+            "extends": []
+        }
+    ],
+    "modules": [],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "appConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/app.config.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "ApplicationConfig",
+                "defaultValue": "{\r\n  providers: [provideRouter(routes)]\r\n}"
+            },
+            {
+                "name": "cameraPosition",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/organism/camera/camera.component.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "object",
+                "defaultValue": "{\r\n\tenvironment: 'environment',\r\n\tuser: 'user'\r\n}"
+            },
+            {
+                "name": "loadTextsToLocalStorage",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/utils/utils.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "",
+                "defaultValue": "(texts: Array<TextsBase>) => {\r\n\r\n  texts.forEach(element => {\r\n    localStorage.setItem(element.label, element.value);\r\n  });\r\n  \r\n}"
+            },
+            {
+                "name": "textsBase",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/organism/camera/camera.data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Array<TextsBase>",
+                "defaultValue": "[\r\n\t{\r\n\t\tlabel: 'btn_text_repeat_picture',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'repetir',\r\n\t},\r\n\t{\r\n\t\tlabel: 'btn_text_send_form',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'enviar',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_front',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_back',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n]"
+            }
+        ],
+        "functions": [],
+        "typealiases": [],
+        "enumerations": [],
+        "groupedVariables": {
+            "src/app/app.config.ts": [
+                {
+                    "name": "appConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/app.config.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ApplicationConfig",
+                    "defaultValue": "{\r\n  providers: [provideRouter(routes)]\r\n}"
+                }
+            ],
+            "src/stories/organism/camera/camera.component.ts": [
+                {
+                    "name": "cameraPosition",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/organism/camera/camera.component.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "object",
+                    "defaultValue": "{\r\n\tenvironment: 'environment',\r\n\tuser: 'user'\r\n}"
+                }
+            ],
+            "src/stories/utils/utils.ts": [
+                {
+                    "name": "loadTextsToLocalStorage",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/utils/utils.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "",
+                    "defaultValue": "(texts: Array<TextsBase>) => {\r\n\r\n  texts.forEach(element => {\r\n    localStorage.setItem(element.label, element.value);\r\n  });\r\n  \r\n}"
+                }
+            ],
+            "src/stories/organism/camera/camera.data.ts": [
+                {
+                    "name": "textsBase",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/organism/camera/camera.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Array<TextsBase>",
+                    "defaultValue": "[\r\n\t{\r\n\t\tlabel: 'btn_text_repeat_picture',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'repetir',\r\n\t},\r\n\t{\r\n\t\tlabel: 'btn_text_send_form',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'enviar',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_front',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_back',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n]"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {},
+        "groupedTypeAliases": {}
+    },
+    "routes": [],
+    "coverage": {
+        "count": 4,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "appConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/organism/camera/camera.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CameraComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/33",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/organism/camera/camera.component.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "cameraPosition",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/organism/camera/camera.data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "textsBase",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/user.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "User",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/models/config-by-lang-model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ConfigBase",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/models/config-by-lang-model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ConfigByLang",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/models/config-by-lang-model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DataConfigBase",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/models/config-by-lang-model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "DataConfigByLang",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/models/config-by-lang-model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Frequency",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/models/config-by-lang-model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "ResponseSchema",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/models/config-by-lang-model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "TextsBase",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/models/config-by-lang-model.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "typesDocument",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/pipes/find-value-in-config-by-lang.pipe.ts",
+                "type": "pipe",
+                "linktype": "pipe",
+                "name": "FindValueInConfigByLangPipe",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/utils/utils.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "loadTextsToLocalStorage",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

@@ -1,0 +1,68 @@
+<div #cameradiv class="camera-bot" *ngIf="!showErrorCamera">
+
+  <i [hidden]="! loading" id="loading" class="sc-icon-loading"></i>
+
+  <div [class.off-visibility]="loading" [attr.type]="typeImage" class="content-camera">
+    <div>
+      <video #video id="video" autoplay></video>
+      <div class="content-camera__container">
+        <div class="sc-water-mark row" *ngIf="typeImage">
+          <div class="sc-water-mark__container">
+            <span class="sc-water-mark__text">{{(typeImage == 'fileImageDocumentFront'? 'lbl_indication_document_front'
+              :
+              typeImage == 'fileImageDocumentBack'? 'lbl_indication_document_back' : '') |
+              findValueInConfigByLang}}</span>
+            <i class="sc-water-mark__icon"></i>
+          </div>
+        </div>
+        <div class="over-button" [hidden]="!cameraOn">
+          <i id="capture" class="sc-icon-camera" (click)="capture()"></i>
+          <i *ngIf="isMobile" id="capture" class="sc-icon-rotate-camera" (click)="definePosition()"></i>
+        </div>
+        <div class="over-buttons" [hidden]="cameraOn">
+          <a id="repeatPicture" class="button right" (click)="again()">{{'btn_text_repeat_picture' |
+            findValueInConfigByLang}}</a>
+          <a id="savePicture" class="button left blue" (click)="savePhotoUser()">{{'btn_text_send_form' |
+            findValueInConfigByLang}}</a>
+        </div>
+      </div>
+    </div>
+    <div [hidden]="true" class="img-container">
+      <canvas #canvas id="canvas" width="635px" height="480px"></canvas>
+      <div class="content-camera__container">
+        <div class="sc-water-mark row" *ngIf="typeImage">
+          <div class="sc-water-mark__container">
+            <span class="sc-water-mark__text">{{(typeImage == 'fileImageDocumentFront'? 'lbl_indication_document_front'
+              :
+              typeImage == 'fileImageDocumentBack'? 'lbl_indication_document_back' : '') |
+              findValueInConfigByLang}}</span>
+            <i class="sc-water-mark__icon"></i>
+          </div>
+        </div>
+        <div class="over-buttons">
+          <a id="repeatPicture" class="button right" (click)="again()">{{'btn_text_repeat_picture' |
+            findValueInConfigByLang}}</a>
+          <a id="savePicture" class="button left blue" (click)="savePhotoUser()">{{'btn_text_send_form' |
+            findValueInConfigByLang}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="showErrorCamera" class="ErrorCamera">
+  <div class="ErrorCamera-header">
+    <div class="ErrorCamera-header-img"></div>
+    <p>¡Ups!</p>
+    <p>Nos hace falta una</p>
+    <p>Herramienta</p>
+  </div>
+  <div class="ErrorCamera-body">
+    <p>Debes contar con una</p>
+    <p>cámara para continuar</p>
+  </div>
+  <div class="ErrorCamera-footer">
+    <button class="btn" (click)="closeModal()">Entendido</button>
+  </div>
+</div>
