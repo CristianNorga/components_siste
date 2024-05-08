@@ -1,22 +1,11 @@
 import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
 
-const cameraPosition = {
-	environment: 'environment',
-	user: 'user'
-};
-/* 
-	dictionary value.
-	DBConfig_co > catalogTexts > 📄 deviceType: "CHATBOT"
-
-	- dictionaryStoreId as bss_person_store_id
-*/
-
 @Component({
 	selector: 'app-camera',
-	templateUrl: './camera.component.html',
-	styleUrls: ['./camera.component.scss'],
+	templateUrl: './carousel.component.html',
+	styleUrls: ['./carousel.component.scss'],
 })
-export class CameraComponent implements OnDestroy {
+export class CarouselComponent implements OnDestroy {
 	@ViewChild('video') video!: ElementRef;
 	@ViewChild('canvas') canvas!: ElementRef;
 
@@ -39,7 +28,7 @@ export class CameraComponent implements OnDestroy {
 	cameraPosition: any;
 	isMobile = false;
 	photoSize = { width: 635, height: 480 };
-	
+
 	markText_comp = () => {
 		switch (this.typeImage) {
 			case 'fileImageDocumentFront':

@@ -1,0 +1,41 @@
+<div id="tittlePpal" class="tittlePpal">
+  {{ 'lbl_title_date_form' | findValueInConfigByLang }}
+</div>
+<div id="encabez" class="encabez">
+  {{ subtitle }}
+</div>
+<br>
+
+
+<div class="container px-0">
+  <div class="row justify-content-center align-items-center">
+
+    <div class="col-12 col-sm">
+      <div class="">
+        <div class="input-group">
+          <input class="form-control" #datePickerPreview value="{{myDateValue | date: 'dd-MM-yyyy'}}"
+            placeholder="DD-MM-AAAA" mask='00-00-0000' (keydown)="typeDate( datePicker, false )">
+          <button class="btn btn-primary" type="button" (click)="isOpenDatePicker = true;"><i
+              class="calendar-icon"></i></button>
+        </div>
+
+
+        <div [hidden]="isdate">
+          <span class="invalid-text">{{'msg_text_error_form' | findValueInConfigByLang}}</span>
+        </div>
+      </div>
+
+      <div>
+        <button class="btn btn-secondary active" [disabled]="!isdate"
+          (click)="isdate && onSubmit()">{{'btn_text_send_form' | findValueInConfigByLang}}</button>
+      </div>
+    </div>
+
+    <div class="container-bs-datepicker-inline" [attr.isOpen]="isOpenDatePicker">
+      <bs-datepicker-inline #datePicker="bsDatepicker" bsDatepicker [minDate]="minDate" [maxDate]="maxDate"
+        [bsConfig]="datePickerConfig" [(bsValue)]="myDateValue" (bsValueChange)="typeDate( datePicker, true )">
+      </bs-datepicker-inline>
+    </div>
+
+  </div>
+</div>

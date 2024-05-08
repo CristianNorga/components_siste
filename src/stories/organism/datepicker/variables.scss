@@ -1,0 +1,30 @@
+$white: #fff;
+
+$chat-background: white;
+$header-color: rgba(0, 54, 156, 1);
+$user-bubble-color: #00369C;
+$bot-bubble-color: #ebf0f6;
+$bot-bubble-error: #e19a9a;
+$bot-text-error: #742020;
+$bot-bubble-error--status: #C6D9FF;
+$bot-text-error--status: #00369C;
+$bot-bubble-info: rgba(198, 217, 255, 1);
+$bot-text-info: rgba(0, 54, 156, 1);
+$light-red: #f5dada;
+$dark-red: #8f5050;
+$header-size: 15%;
+$ligthBlue: #e5e5e5;
+$dark-blue: #003891;
+
+.theme-green .bs-datepicker-head,
+.theme-green .bs-datepicker-body table td span.selected,
+.theme-green .bs-datepicker-body table td.selected span,
+.theme-green .bs-datepicker-body table td span[class*="select-"]:after,
+.theme-green .bs-datepicker-body table td[class*="select-"] span:after {
+  background-color: #003891 !important;
+}
+
+.theme-green .bs-datepicker-body table td.week span {
+  color: #003891 !important;
+}
+
