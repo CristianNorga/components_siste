@@ -1,0 +1,14 @@
+.dot {
+  transition: all 0.3s;
+  cursor: pointer;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--bs-white);
+  margin: 0px 8px;
+  &[is-selected="true"] {
+    width: 29px;
+    border-radius: 25px;
+  }
+}
+

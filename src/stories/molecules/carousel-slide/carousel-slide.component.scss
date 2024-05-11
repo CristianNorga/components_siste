@@ -1,0 +1,52 @@
+.carousel-slide {
+  width: -moz-calc(100% / 1);
+  width: calc(100% / 1);
+  @media (max-width: 576px) {
+    .elCenter::before {
+      background-color: transparent;
+    }
+    .elCenter::after {
+      background-color: transparent;
+    }
+    width: -moz-calc(100% / 1);
+    width: calc(100% / 1);
+  }
+}
+
+/* .carousel-slide svg {
+  width: 120px;
+  height: 120px;
+} */
+
+/* .carousel-slide .fromBlueLight {
+  fill: #0dbacc;
+  transition: fill 0.3s;
+}
+
+.carousel-slide:hover .toBlueDark {
+  fill: #00a3e0;
+} */
+
+/* .carousel-slide.elCenter::before {
+  content: '';
+  position: absolute;
+  background-color: #0033a0;
+  width: 2px;
+  height: 100%;
+  max-height: 155px;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%) !important;
+}
+
+.carousel-slide.elCenter::after {
+  content: '';
+  position: absolute;
+  background-color: #0033a0;
+  width: 2px;
+  height: 100%;
+  max-height: 155px;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%) !important;
+} */

@@ -1,48 +1,31 @@
-<div #cameradiv class="camera-bot" *ngIf="!showErrorCamera">
-
-  <i [hidden]="! loading" id="loading" class="sc-icon-loading"></i>
-
-  <div [class.off-visibility]="loading" [attr.type]="typeImage" class="content-camera">
-    <div class="d-flex justify-content-center">
-      <video #video id="video" autoplay></video>
-      <div class="content-camera__container">
-        <div class="sc-water-mark row" *ngIf="typeImage">
-          <div class="sc-water-mark__container">
-            <span *ngIf="markText_comp() != ''" class="sc-water-mark__text">{{markText_comp() | findValueInConfigByLang}}</span>
-            <i class="sc-water-mark__icon"></i>
-          </div>
+<div #slides (mouseenter)="removeInterval()" (mouseleave)="createInterval()" (touchstart)="removeInterval()"
+  class="carousel d-flex justify-content-center align-items-center w-100" [ngStyle]="style">
+  <ng-container>
+    <app-carousel-slide [slidemodified]="carousel.slideSeleted" (arrange)="arrange($event)" [slides]="carousel.slides">
+      <ng-container>
+        <div class="ratio ratio-16x9">
+          <a href="https://google.com" target="_blank"> 
+            <img
+              src="https://dummyjson.com/image/1000x400/008080/ffffff"
+              alt="" style="width: 100%;"> </a>
         </div>
-        <div class="over-button" [hidden]="!cameraOn">
-          <i id="capture" class="sc-icon-camera" (click)="capture()"></i>
-          <i *ngIf="isMobile" id="capture" class="sc-icon-rotate-camera" (click)="definePosition()"></i>
+      </ng-container>
+    </app-carousel-slide>
+    <app-carousel-slide [slidemodified]="carousel.slideSeleted" (arrange)="arrange($event)"
+      [slides]="carousel.slides">
+      <ng-container>
+        <div class="ratio ratio-16x9">
+          <a href="https://google.com" target="_blank">
+            <img src="https://dummyjson.com/image/1000x400/282828" alt="" style="width: 100%;"> </a>
         </div>
-        <div class="over-buttons" [hidden]="cameraOn">
-          <a id="repeatPicture" class="button right" (click)="again()">{{'btn_text_repeat_picture' |
-            findValueInConfigByLang}}</a>
-          <a id="savePicture" class="button left blue" (click)="savePhotoUser()">{{'btn_text_send_form' |
-            findValueInConfigByLang}}</a>
-        </div>
-      </div>
-    </div>
-    <div [hidden]="true" class="img-container">
-      <canvas #canvas id="canvas" width="635px" height="480px"></canvas>
-    </div>
-  </div>
-
-</div>
-
-<div *ngIf="showErrorCamera" class="ErrorCamera">
-  <div class="ErrorCamera-header">
-    <div class="ErrorCamera-header-img"></div>
-    <p>¡Ups!</p>
-    <p>Nos hace falta una</p>
-    <p>Herramienta</p>
-  </div>
-  <div class="ErrorCamera-body">
-    <p>Debes contar con una</p>
-    <p>cámara para continuar</p>
-  </div>
-  <div class="ErrorCamera-footer">
-    <button class="btn" (click)="closeModal()">Entendido</button>
+      </ng-container>
+    </app-carousel-slide>
+  </ng-container>
+  <div class="dots">
+    <!-- <i (click)="arrange(changeSlide('subtract'))" class="icon i-arrow-incomplete i-xs left"></i>
+    <ng-container *ngTemplateOutlet="dots">
+      <app-carousel-dot *ngFor="let slide of slidesArray; let i = index" (arrange)="arrange($event)"  [index]="i" [dot-selected]="carousel.slideSeleted"></app-carousel-dot>
+    </ng-container>
+    <i (click)="arrange(changeSlide('add'))" class="icon i-arrow-incomplete i-xs"></i> -->
   </div>
 </div>

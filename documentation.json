@@ -838,7 +838,7 @@
         {
             "name": "ButtonComponent",
             "id": "component-ButtonComponent-c3bd323da00016e22e16a3a7d43440094eeceddea5e6076a399bcaba62f8e742efe65e543735e36f9ea1bed026ab8e3c8fb60482667ae55ec324f8adfe79b9f7",
-            "file": "src/stories/button.component.ts",
+            "file": "src/stories/molecules/button/button.component.ts",
             "encapsulation": [],
             "entryComponents": [],
             "inputs": [],
@@ -1403,6 +1403,573 @@
             "templateData": "<div #cameradiv class=\"camera-bot\" *ngIf=\"!showErrorCamera\">\r\n\r\n  <i [hidden]=\"! loading\" id=\"loading\" class=\"sc-icon-loading\"></i>\r\n\r\n  <div [class.off-visibility]=\"loading\" [attr.type]=\"typeImage\" class=\"content-camera\">\r\n    <div class=\"d-flex justify-content-center\">\r\n      <video #video id=\"video\" autoplay></video>\r\n      <div class=\"content-camera__container\">\r\n        <div class=\"sc-water-mark row\" *ngIf=\"typeImage\">\r\n          <div class=\"sc-water-mark__container\">\r\n            <span *ngIf=\"markText_comp() != ''\" class=\"sc-water-mark__text\">{{markText_comp() | findValueInConfigByLang}}</span>\r\n            <i class=\"sc-water-mark__icon\"></i>\r\n          </div>\r\n        </div>\r\n        <div class=\"over-button\" [hidden]=\"!cameraOn\">\r\n          <i id=\"capture\" class=\"sc-icon-camera\" (click)=\"capture()\"></i>\r\n          <i *ngIf=\"isMobile\" id=\"capture\" class=\"sc-icon-rotate-camera\" (click)=\"definePosition()\"></i>\r\n        </div>\r\n        <div class=\"over-buttons\" [hidden]=\"cameraOn\">\r\n          <a id=\"repeatPicture\" class=\"button right\" (click)=\"again()\">{{'btn_text_repeat_picture' |\r\n            findValueInConfigByLang}}</a>\r\n          <a id=\"savePicture\" class=\"button left blue\" (click)=\"savePhotoUser()\">{{'btn_text_send_form' |\r\n            findValueInConfigByLang}}</a>\r\n        </div>\r\n      </div>\r\n    </div>\r\n    <div [hidden]=\"true\" class=\"img-container\">\r\n      <canvas #canvas id=\"canvas\" width=\"635px\" height=\"480px\"></canvas>\r\n    </div>\r\n  </div>\r\n\r\n</div>\r\n\r\n<div *ngIf=\"showErrorCamera\" class=\"ErrorCamera\">\r\n  <div class=\"ErrorCamera-header\">\r\n    <div class=\"ErrorCamera-header-img\"></div>\r\n    <p>¡Ups!</p>\r\n    <p>Nos hace falta una</p>\r\n    <p>Herramienta</p>\r\n  </div>\r\n  <div class=\"ErrorCamera-body\">\r\n    <p>Debes contar con una</p>\r\n    <p>cámara para continuar</p>\r\n  </div>\r\n  <div class=\"ErrorCamera-footer\">\r\n    <button class=\"btn\" (click)=\"closeModal()\">Entendido</button>\r\n  </div>\r\n</div>\r\n"
         },
         {
+            "name": "CarouselComponent",
+            "id": "component-CarouselComponent-f75652dc89bef8744bc17845021fd5ead1c66cd127277862617444278cdd64c79c10be591f6d554b5b310733ace3783f5efce2b5d7801acfd0be9af5ce2da04a",
+            "file": "src/stories/organism/carousel/carousel.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-carousel",
+            "styleUrls": [
+                "./carousel.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./carousel.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "carousel",
+                    "defaultValue": "{\r\n\t\tslides: [],\r\n\t\tslidemodified: 0,\r\n\t\tslideSeleted: 0,\r\n\t\tstylesSlides: {},\r\n\t}",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "literal type",
+                    "optional": false,
+                    "description": "",
+                    "line": 29
+                },
+                {
+                    "name": "minHeight",
+                    "defaultValue": "318",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 26
+                },
+                {
+                    "name": "selected",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 25
+                },
+                {
+                    "name": "setInterval",
+                    "defaultValue": "null",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 27
+                },
+                {
+                    "name": "slideLength",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 28
+                },
+                {
+                    "name": "slides",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "ElementRef<any>",
+                    "optional": false,
+                    "description": "",
+                    "line": 24,
+                    "decorators": [
+                        {
+                            "name": "ViewChild",
+                            "stringifiedArguments": "'slides'"
+                        }
+                    ],
+                    "modifierKind": [
+                        170
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "_mod",
+                    "args": [
+                        {
+                            "name": "n",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        },
+                        {
+                            "name": "m",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 80,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "n",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "m",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "addSlides",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 129,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "arrange",
+                    "args": [
+                        {
+                            "name": "centerIndex",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": ""
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 84,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "centerIndex",
+                            "type": "",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "changeSlide",
+                    "args": [
+                        {
+                            "name": "operation",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "'add'"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "number",
+                    "typeParameters": [],
+                    "line": 62,
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "jsdoctags": [
+                        {
+                            "name": "operation",
+                            "type": "string",
+                            "deprecated": false,
+                            "deprecationMessage": "",
+                            "defaultValue": "'add'",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "createInterval",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 56,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngAfterViewInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 48,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "removeInterval",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 76,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                },
+                {
+                    "name": "CarouselSlideComponent",
+                    "type": "component"
+                },
+                {
+                    "name": "CarouselDotComponent",
+                    "type": "component"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import {\r\n\tComponent,\r\n\tTemplateRef,\r\n\tElementRef,\r\n\tInput,\r\n\tAfterViewInit,\r\n\tOnInit,\r\n\tViewChild,\r\n} from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n\r\nimport { CarouselSlideComponent } from '../../molecules/carousel-slide/carousel-slide.component';\r\nimport { CarouselDotComponent } from '../../molecules/carousel-dot/carousel-dot.component';\r\n\r\n@Component({\r\n\tselector: 'app-carousel',\r\n\ttemplateUrl: './carousel.component.html',\r\n\tstyleUrls: ['./carousel.component.scss'],\r\n\timports: [CommonModule, CarouselSlideComponent, CarouselDotComponent],\r\n\tstandalone: true,\r\n})\r\nexport class CarouselComponent implements AfterViewInit {\r\n\t@ViewChild('slides') slides!: ElementRef<any>;\r\n\tselected: number = 0;\r\n\tminHeight: number = 318;\r\n\tsetInterval: any = null;\r\n\tslideLength: number = 0;\r\n\tcarousel: {\r\n\t\tslides: ElementRef[];\r\n\t\tslidemodified: number;\r\n\t\tslideSeleted: number;\r\n\t\tstylesSlides: {\r\n\t\t\t[index: number]: {\r\n\t\t\t\tzIndex: number;\r\n\t\t\t\topacity: number;\r\n\t\t\t\txtrans: number;\r\n\t\t\t\tscale: number;\r\n\t\t\t};\r\n\t\t};\r\n\t} = {\r\n\t\tslides: [],\r\n\t\tslidemodified: 0,\r\n\t\tslideSeleted: 0,\r\n\t\tstylesSlides: {},\r\n\t};\r\n\r\n\tngAfterViewInit() {\r\n\t\tdebugger;\r\n\t\tthis.addSlides();\r\n\t\tthis.slideLength = this.carousel.slides.length;\r\n\t\tthis.arrange(1);\r\n\t\tthis.createInterval();\r\n\t}\r\n\r\n\tcreateInterval() {\r\n\t\tthis.setInterval = setInterval(() => {\r\n\t\t\tthis.arrange(this.changeSlide());\r\n\t\t}, 4000);\r\n\t}\r\n\r\n\tchangeSlide(operation: string = 'add') {\r\n\t\tswitch (operation) {\r\n\t\t\tcase 'add':\r\n\t\t\t\tthis.selected =\r\n\t\t\t\t\tthis.slideLength - 1 <= this.selected ? 0 : this.selected + 1;\r\n\t\t\t\tbreak;\r\n\t\t\tcase 'subtract':\r\n\t\t\t\tthis.selected =\r\n\t\t\t\t\t0 == this.selected ? this.slideLength - 1 : this.selected - 1;\r\n\t\t\t\tbreak;\r\n\t\t}\r\n\t\treturn this.selected;\r\n\t}\r\n\r\n\tremoveInterval() {\r\n\t\tclearInterval(this.setInterval);\r\n\t}\r\n\r\n\t_mod(n, m) {\r\n\t\treturn ((n % m) + m) % m;\r\n\t}\r\n\r\n\tarrange(centerIndex) {\r\n\t\tconst half = (this.carousel.slides.length - 1) / 2;\r\n\r\n\t\tconst before = [];\r\n\t\tfor (let i = centerIndex - 1; before.length < half; i--) {\r\n\t\t\tbefore.push(this.carousel.slides[this._mod(i, this.carousel.slides.length)]);\r\n\t\t}\r\n\r\n\t\tconst after = [];\r\n\t\tfor (\r\n\t\t\tlet i = centerIndex + 1;\r\n\t\t\tafter.length < this.carousel.slides.length - before.length - 1;\r\n\t\t\ti++\r\n\t\t) {\r\n\t\t\tafter.push(this.carousel.slides[this._mod(i, this.carousel.slides.length)]);\r\n\t\t}\r\n\r\n\t\tthis.carousel.stylesSlides[centerIndex].xtrans = 0;\r\n\t\tthis.carousel.stylesSlides[centerIndex].scale = 1;\r\n\t\tthis.carousel.stylesSlides[centerIndex].opacity = 1;\r\n\t\tthis.carousel.stylesSlides[centerIndex].zIndex =\r\n\t\t\tMath.max(before.length, after.length) + 1;\r\n\t\tthis.carousel.slideSeleted = centerIndex;\r\n\r\n\t\t[before, after].forEach((list, listIndex) => {\r\n\t\t\tlet parentTrans = 0;\r\n\r\n\t\t\tlist.forEach((item, i) => {\r\n\t\t\t\tthis.carousel.stylesSlides[item.props.index].scale = 0.8 ** (i + 1);\r\n\t\t\t\tconst absolute =\r\n\t\t\t\t\t105 * this.carousel.stylesSlides[item.props.index].scale * 1.125 +\r\n\t\t\t\t\tparentTrans;\r\n\t\t\t\tparentTrans = absolute;\r\n\t\t\t\tthis.carousel.stylesSlides[item.props.index].xtrans =\r\n\t\t\t\t\t(listIndex == 0 ? -1 : 1) * absolute;\r\n\r\n\t\t\t\tthis.carousel.stylesSlides[item.props.index].opacity = 0;\r\n\r\n\t\t\t\tthis.carousel.stylesSlides[item.props.index].zIndex =\r\n\t\t\t\t\tMath.max(before.length, after.length) - i;\r\n\t\t\t\tthis.carousel.slidemodified = item.props.index;\r\n\t\t\t});\r\n\t\t});\r\n\t}\r\n\r\n\taddSlides() {\r\n\t\tfor (let i = 1; i < this.slides.nativeElement.children.length; i++) {\r\n\t\t\tthis.carousel.slides.push(this.slides.nativeElement.children[i]);\r\n\t\t}\r\n\t}\r\n\r\n\tget style() {\r\n\t\treturn {\r\n\t\t\theight: this.minHeight + 'px',\r\n\t\t};\r\n\t}\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "\r\n.carousel {\r\n  position: relative;\r\n  overflow: hidden;\r\n  .arrow {\r\n    cursor: pointer;\r\n    width: 50px;\r\n    height: 50px;\r\n    z-index: 10;\r\n  }\r\n  .icon {\r\n    background-color: #ffffff;\r\n  }\r\n  .left {\r\n    transform: rotate(180deg) !important;\r\n  }\r\n  .dots {\r\n    position: absolute;\r\n    padding: 0%;\r\n    width: 100%;\r\n    bottom: 0%;\r\n    z-index: 10;\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: center;\r\n  }\r\n}\r\n\r\n@media (max-width: 576px) {\r\n  .carousel {\r\n    max-height: 251.44px;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./carousel.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "extends": [],
+            "implements": [
+                "AfterViewInit"
+            ],
+            "accessors": {
+                "style": {
+                    "name": "style",
+                    "getSignature": {
+                        "name": "style",
+                        "type": "",
+                        "returnType": "",
+                        "line": 135
+                    }
+                }
+            },
+            "templateData": "<div #slides (mouseenter)=\"removeInterval()\" (mouseleave)=\"createInterval()\" (touchstart)=\"removeInterval()\"\r\n  class=\"carousel d-flex justify-content-center align-items-center w-100\" [ngStyle]=\"style\">\r\n  <ng-container>\r\n    <app-carousel-slide [index]=\"0\" [slidemodified]=\"carousel.slideSeleted\" (arrange)=\"arrange($event)\" [stylesslides]=\"carousel.stylesSlides\">\r\n      <ng-container>\r\n        <div class=\"ratio ratio-16x9\">\r\n          <a href=\"https://google.com\" target=\"_blank\"> \r\n            <img\r\n              src=\"https://dummyjson.com/image/400x200/008080/ffffff\"\r\n              alt=\"\"> </a>\r\n        </div>\r\n      </ng-container>\r\n    </app-carousel-slide>\r\n    <app-carousel-slide [index]=\"0\" [slidemodified]=\"carousel.slideSeleted\" (arrange)=\"arrange($event)\"\r\n      [stylesslides]=\"carousel.stylesSlides\">\r\n      <ng-container>\r\n        <div class=\"ratio ratio-16x9\">\r\n          <a href=\"https://google.com\" target=\"_blank\">\r\n            <img src=\"https://dummyjson.com/image/400x200/282828\" alt=\"\"> </a>\r\n        </div>\r\n      </ng-container>\r\n    </app-carousel-slide>\r\n  </ng-container>\r\n  <div class=\"dots\">\r\n    <!-- <i (click)=\"arrange(changeSlide('subtract'))\" class=\"icon i-arrow-incomplete i-xs left\"></i>\r\n    <ng-container *ngTemplateOutlet=\"dots\">\r\n      <app-carousel-dot *ngFor=\"let slide of slidesArray; let i = index\" (arrange)=\"arrange($event)\"  [index]=\"i\" [dot-selected]=\"carousel.slideSeleted\"></app-carousel-dot>\r\n    </ng-container>\r\n    <i (click)=\"arrange(changeSlide('add'))\" class=\"icon i-arrow-incomplete i-xs\"></i> -->\r\n  </div>\r\n</div>\r\n"
+        },
+        {
+            "name": "CarouselDotComponent",
+            "id": "component-CarouselDotComponent-1076da8c3d59aea360600b57397bc90d55f436d2bbd02e152e20c8f879b60ed5efff853b4b92c3c3f829b81142977df9d83c143aac3bc3a91230b71a6cb937b3",
+            "file": "src/stories/molecules/carousel-dot/carousel-dot.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-carousel-dot",
+            "styleUrls": [
+                "./carousel-dot.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./carousel-dot.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "dotSelected",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 16,
+                    "type": "number",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "arrange",
+                    "defaultValue": "new EventEmitter()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 20,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [
+                {
+                    "name": "index",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "number",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                },
+                {
+                    "name": "name",
+                    "defaultValue": "''",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 13
+                },
+                {
+                    "name": "selected",
+                    "defaultValue": "false",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "boolean",
+                    "optional": false,
+                    "description": "",
+                    "line": 22
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "select",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n\tselector: 'app-carousel-dot',\r\n\ttemplateUrl: './carousel-dot.component.html',\r\n\tstyleUrls: ['./carousel-dot.component.scss'],\r\n\tstandalone: true,\r\n\timports: [CommonModule],\r\n})\r\nexport class CarouselDotComponent {\r\n\tindex: number = 0;\r\n\tname: string = '';\r\n\r\n\t@Input()\r\n\tset dotSelected(value: number) {\r\n\t\tthis.selected = this.index === value;\r\n\t}\r\n\r\n\t@Output() arrange = new EventEmitter();\r\n\r\n\tselected: boolean = false;\r\n\r\n\tconstructor() {}\r\n\r\n\tselect() {\r\n\t\tthis.arrange.emit({ index: this.index, name: this.name });\r\n\t}\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".dot {\r\n  transition: all 0.3s;\r\n  cursor: pointer;\r\n  width: 9px;\r\n  height: 9px;\r\n  border-radius: 50%;\r\n  background-color: var(--bs-white);\r\n  margin: 0px 8px;\r\n  &[is-selected=\"true\"] {\r\n    width: 29px;\r\n    border-radius: 25px;\r\n  }\r\n}\r\n\r\n",
+                    "styleUrl": "./carousel-dot.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 22
+            },
+            "extends": [],
+            "accessors": {
+                "dotSelected": {
+                    "name": "dotSelected",
+                    "setSignature": {
+                        "name": "dotSelected",
+                        "type": "void",
+                        "deprecated": false,
+                        "deprecationMessage": "",
+                        "args": [
+                            {
+                                "name": "value",
+                                "type": "number",
+                                "deprecated": false,
+                                "deprecationMessage": ""
+                            }
+                        ],
+                        "returnType": "void",
+                        "line": 16,
+                        "jsdoctags": [
+                            {
+                                "name": "value",
+                                "type": "number",
+                                "deprecated": false,
+                                "deprecationMessage": "",
+                                "tagName": {
+                                    "text": "param"
+                                }
+                            }
+                        ]
+                    }
+                }
+            },
+            "templateData": "<div (click)=\"select\" class=\"dot\" :is-selected=\"selected\"></div>"
+        },
+        {
+            "name": "CarouselSlideComponent",
+            "id": "component-CarouselSlideComponent-6463c2ec99d75a44419c9020016f3a789ee814247221a366e9457296c562b088ec4d6c45902cb447b1f23aa118191025c6b3af4c7f0d9bc638f3085a374b08fe",
+            "file": "src/stories/molecules/carousel-slide/carousel-slide.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-carousel-slide",
+            "styleUrls": [
+                "./carousel-slide.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./carousel-slide.component.html"
+            ],
+            "viewProviders": [],
+            "hostDirectives": [],
+            "inputsClass": [
+                {
+                    "name": "index",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 13,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "slidemodified",
+                    "defaultValue": "0",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 14,
+                    "type": "number",
+                    "decorators": []
+                },
+                {
+                    "name": "stylesslides",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 15,
+                    "type": "literal type",
+                    "decorators": []
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "arrange",
+                    "defaultValue": "new EventEmitter<any>()",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "line": 12,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "centerSelf",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 31,
+                    "deprecated": false,
+                    "deprecationMessage": ""
+                }
+            ],
+            "deprecated": false,
+            "deprecationMessage": "",
+            "hostBindings": [],
+            "hostListeners": [],
+            "standalone": true,
+            "imports": [
+                {
+                    "name": "CommonModule",
+                    "type": "module"
+                }
+            ],
+            "description": "",
+            "rawdescription": "\n",
+            "type": "component",
+            "sourceCode": "import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\n@Component({\r\n\tselector: 'app-carousel-slide',\r\n\ttemplateUrl: './carousel-slide.component.html',\r\n\tstyleUrls: ['./carousel-slide.component.scss'],\r\n\tstandalone: true,\r\n\timports: [CommonModule],\r\n})\r\nexport class CarouselSlideComponent implements OnInit{\r\n\t@Output() arrange = new EventEmitter<any>();\r\n\t@Input() index: number;\r\n\t@Input() slidemodified: number = 0;\r\n\t@Input() stylesslides: {\r\n\t\t[index: number]: {\r\n\t\t\tzIndex: number;\r\n\t\t\topacity: number;\r\n\t\t\txtrans: number;\r\n\t\t\tscale: number;\r\n\t\t\tytrans: number;\r\n\t\t}\r\n\t};\r\n\r\n\tconstructor() {}\r\n\r\n\tcenterSelf() {\r\n\t\tthis.arrange.emit(this.index);\r\n\t}\r\n\r\n\tngOnInit() {\r\n\t\tthis.stylesslides[this.index] = {\r\n\t\t\tzIndex: 0,\r\n\t\t\topacity: 1,\r\n\t\t\txtrans: 0,\r\n\t\t\tscale: 1,\r\n\t\t\tytrans: 0,\r\n\t\t};\r\n\t}\r\n\r\n\tget style() {\r\n\t\treturn {\r\n\t\t\ttransition: 'transform 0.5s, opacity 0.5s',\r\n\t\t\ttransform: this.transform,\r\n\t\t\t'z-index': this.stylesslides[this.index].zIndex,\r\n\t\t\topacity: this.stylesslides[this.index].opacity,\r\n\t\t};\r\n\t}\r\n\r\n\tget transform() {\r\n\t\treturn `translate(${this.stylesslides[this.index].xtrans}%, 0%)`;\r\n\t}\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./carousel-slide.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "args": [],
+                "line": 23
+            },
+            "extends": [],
+            "implements": [
+                "OnInit"
+            ],
+            "accessors": {
+                "style": {
+                    "name": "style",
+                    "getSignature": {
+                        "name": "style",
+                        "type": "",
+                        "returnType": "",
+                        "line": 41
+                    }
+                },
+                "transform": {
+                    "name": "transform",
+                    "getSignature": {
+                        "name": "transform",
+                        "type": "",
+                        "returnType": "",
+                        "line": 50
+                    }
+                }
+            },
+            "templateData": "<div class=\"carousel-slide position-absolute top-0 start-0 w-100 d-flex justify-content-center align-items-center h-100\"\r\n  [ngStyle]=\"style\" (click)=\"centerSelf()\">\r\n  <ng-content></ng-content>\r\n</div>"
+        },
+        {
             "name": "DatepickerComponent",
             "id": "component-DatepickerComponent-d8c522579db58d61ea525c15703387535a5ccee4f0c4988d7701c4b86dbb778c7a44130287b7367fcd3c4ff4ee0cb231de933b96be78d1b5eaac60a0b5367086",
             "file": "src/stories/organism/datepicker/datepicker.component.ts",
@@ -1873,7 +2440,7 @@
         },
         {
             "name": "HeaderComponent",
-            "id": "component-HeaderComponent-07f894be6f38e12f30e1e7e5d9e999c27c78ce2f0be03c15c8c5f39207229e147892a2fd1fdb54e935c4f04f03c2162e39a22c28cdc64e027ea15824ddf0f3c9",
+            "id": "component-HeaderComponent-e29c5e4dbfc8dd605660b9ec9c479909eb7f6e04aec7adf7157cad3b18a39c6e32c454923fd748a90aff5f3ff5c0c6f911c6474e45f90a9bd0177415806abff7",
             "file": "src/stories/header.component.ts",
             "encapsulation": [],
             "entryComponents": [],
@@ -1946,7 +2513,7 @@
             "description": "",
             "rawdescription": "\n",
             "type": "component",
-            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { ButtonComponent } from './button.component';\r\nimport type { User } from './user';\r\n\r\n@Component({\r\n  selector: 'storybook-header',\r\n  standalone: true,\r\n  imports: [CommonModule, ButtonComponent],\r\n  template: `<header>\r\n    <div class=\"storybook-header\">\r\n      <div>\r\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\r\n              fill=\"#FFF\"\r\n            />\r\n            <path\r\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\r\n              fill=\"#555AB9\"\r\n            />\r\n            <path\r\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\r\n              fill=\"#91BAF8\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        <h1>Acme</h1>\r\n      </div>\r\n      <div>\r\n        <div *ngIf=\"user\">\r\n          <span class=\"welcome\">\r\n            Welcome, <b>{{ user.name }}</b\r\n            >!\r\n          </span>\r\n          <storybook-button\r\n            *ngIf=\"user\"\r\n            size=\"small\"\r\n            (onClick)=\"onLogout.emit($event)\"\r\n            label=\"Log out\"\r\n          ></storybook-button>\r\n        </div>\r\n        <div *ngIf=\"!user\">\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onLogin.emit($event)\"\r\n            label=\"Log in\"\r\n          ></storybook-button>\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            [primary]=\"true\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onCreateAccount.emit($event)\"\r\n            label=\"Sign up\"\r\n          ></storybook-button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </header>`,\r\n  styleUrls: ['./header.css'],\r\n})\r\nexport class HeaderComponent {\r\n  @Input()\r\n  user: User | null = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\r\nimport { CommonModule } from '@angular/common';\r\n\r\nimport { ButtonComponent } from './molecules/button/button.component';\r\nimport type { User } from './user';\r\n\r\n@Component({\r\n  selector: 'storybook-header',\r\n  standalone: true,\r\n  imports: [CommonModule, ButtonComponent],\r\n  template: `<header>\r\n    <div class=\"storybook-header\">\r\n      <div>\r\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\r\n          <g fill=\"none\" fillRule=\"evenodd\">\r\n            <path\r\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\r\n              fill=\"#FFF\"\r\n            />\r\n            <path\r\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\r\n              fill=\"#555AB9\"\r\n            />\r\n            <path\r\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\r\n              fill=\"#91BAF8\"\r\n            />\r\n          </g>\r\n        </svg>\r\n        <h1>Acme</h1>\r\n      </div>\r\n      <div>\r\n        <div *ngIf=\"user\">\r\n          <span class=\"welcome\">\r\n            Welcome, <b>{{ user.name }}</b\r\n            >!\r\n          </span>\r\n          <storybook-button\r\n            *ngIf=\"user\"\r\n            size=\"small\"\r\n            (onClick)=\"onLogout.emit($event)\"\r\n            label=\"Log out\"\r\n          ></storybook-button>\r\n        </div>\r\n        <div *ngIf=\"!user\">\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onLogin.emit($event)\"\r\n            label=\"Log in\"\r\n          ></storybook-button>\r\n          <storybook-button\r\n            *ngIf=\"!user\"\r\n            size=\"small\"\r\n            [primary]=\"true\"\r\n            class=\"margin-left\"\r\n            (onClick)=\"onCreateAccount.emit($event)\"\r\n            label=\"Sign up\"\r\n          ></storybook-button>\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </header>`,\r\n  styleUrls: ['./header.css'],\r\n})\r\nexport class HeaderComponent {\r\n  @Input()\r\n  user: User | null = null;\r\n\r\n  @Output()\r\n  onLogin = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onLogout = new EventEmitter<Event>();\r\n\r\n  @Output()\r\n  onCreateAccount = new EventEmitter<Event>();\r\n}\r\n",
             "assetsDirs": [],
             "styleUrlsData": [
                 {
@@ -2088,7 +2655,7 @@
                 "name": "textsBase",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/organism/datepicker/datepicker.data.ts",
+                "file": "src/stories/organism/camera/camera.data.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Array<TextsBase>",
@@ -2098,7 +2665,17 @@
                 "name": "textsBase",
                 "ctype": "miscellaneous",
                 "subtype": "variable",
-                "file": "src/stories/organism/camera/camera.data.ts",
+                "file": "src/stories/organism/carousel/carousel.data.ts",
+                "deprecated": false,
+                "deprecationMessage": "",
+                "type": "Array<TextsBase>",
+                "defaultValue": "[\r\n\t{\r\n\t\tlabel: 'btn_text_repeat_picture',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'repetir',\r\n\t},\r\n\t{\r\n\t\tlabel: 'btn_text_send_form',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'enviar',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_front',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_back',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n]"
+            },
+            {
+                "name": "textsBase",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/organism/datepicker/datepicker.data.ts",
                 "deprecated": false,
                 "deprecationMessage": "",
                 "type": "Array<TextsBase>",
@@ -2145,24 +2722,36 @@
                     "defaultValue": "(texts: Array<TextsBase>) => {\r\n\r\n  texts.forEach(element => {\r\n    localStorage.setItem(element.label, element.value);\r\n  });\r\n  \r\n}"
                 }
             ],
-            "src/stories/organism/datepicker/datepicker.data.ts": [
-                {
-                    "name": "textsBase",
-                    "ctype": "miscellaneous",
-                    "subtype": "variable",
-                    "file": "src/stories/organism/datepicker/datepicker.data.ts",
-                    "deprecated": false,
-                    "deprecationMessage": "",
-                    "type": "Array<TextsBase>",
-                    "defaultValue": "[\r\n\t{\r\n\t\tlabel: 'btn_text_repeat_picture',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'repetir',\r\n\t},\r\n\t{\r\n\t\tlabel: 'btn_text_send_form',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'enviar',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_front',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_back',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n]"
-                }
-            ],
             "src/stories/organism/camera/camera.data.ts": [
                 {
                     "name": "textsBase",
                     "ctype": "miscellaneous",
                     "subtype": "variable",
                     "file": "src/stories/organism/camera/camera.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Array<TextsBase>",
+                    "defaultValue": "[\r\n\t{\r\n\t\tlabel: 'btn_text_repeat_picture',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'repetir',\r\n\t},\r\n\t{\r\n\t\tlabel: 'btn_text_send_form',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'enviar',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_front',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_back',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n]"
+                }
+            ],
+            "src/stories/organism/carousel/carousel.data.ts": [
+                {
+                    "name": "textsBase",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/organism/carousel/carousel.data.ts",
+                    "deprecated": false,
+                    "deprecationMessage": "",
+                    "type": "Array<TextsBase>",
+                    "defaultValue": "[\r\n\t{\r\n\t\tlabel: 'btn_text_repeat_picture',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'repetir',\r\n\t},\r\n\t{\r\n\t\tlabel: 'btn_text_send_form',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'enviar',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_front',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n\t{\r\n\t\tlabel: 'lbl_indication_document_back',\r\n\t\ttype: 'text',\r\n\t\tvalue: 'value',\r\n\t},\r\n]"
+                }
+            ],
+            "src/stories/organism/datepicker/datepicker.data.ts": [
+                {
+                    "name": "textsBase",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/organism/datepicker/datepicker.data.ts",
                     "deprecated": false,
                     "deprecationMessage": "",
                     "type": "Array<TextsBase>",
@@ -2176,7 +2765,7 @@
     },
     "routes": [],
     "coverage": {
-        "count": 3,
+        "count": 2,
         "status": "low",
         "files": [
             {
@@ -2199,7 +2788,16 @@
                 "status": "low"
             },
             {
-                "filePath": "src/stories/button.component.ts",
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/molecules/button/button.component.ts",
                 "type": "component",
                 "linktype": "component",
                 "name": "ButtonComponent",
@@ -2208,12 +2806,21 @@
                 "status": "very-good"
             },
             {
-                "filePath": "src/stories/header.component.ts",
+                "filePath": "src/stories/molecules/carousel-dot/carousel-dot.component.ts",
                 "type": "component",
                 "linktype": "component",
-                "name": "HeaderComponent",
+                "name": "CarouselDotComponent",
                 "coveragePercent": 0,
-                "coverageCount": "0/5",
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/molecules/carousel-slide/carousel-slide.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CarouselSlideComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
                 "status": "low"
             },
             {
@@ -2237,6 +2844,25 @@
             },
             {
                 "filePath": "src/stories/organism/camera/camera.data.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "textsBase",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/organism/carousel/carousel.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "CarouselComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/14",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/organism/carousel/carousel.data.ts",
                 "type": "variable",
                 "linktype": "miscellaneous",
                 "linksubtype": "variable",

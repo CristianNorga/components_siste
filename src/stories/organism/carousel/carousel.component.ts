@@ -1,175 +1,203 @@
-import { Component, ElementRef, EventEmitter, Input, OnDestroy, Output, ViewChild } from '@angular/core';
+import {
+	Component,
+	TemplateRef,
+	ElementRef,
+	Input,
+	AfterViewInit,
+	OnInit,
+	ViewChild,
+} from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+
+import { CarouselSlideComponent } from '../../molecules/carousel-slide/carousel-slide.component';
+import { CarouselDotComponent } from '../../molecules/carousel-dot/carousel-dot.component';
 
 @Component({
-	selector: 'app-camera',
+	selector: 'app-carousel',
 	templateUrl: './carousel.component.html',
 	styleUrls: ['./carousel.component.scss'],
+	imports: [CommonModule, CarouselSlideComponent, CarouselDotComponent],
+	standalone: true,
 })
-export class CarouselComponent implements OnDestroy {
-	@ViewChild('video') video!: ElementRef;
-	@ViewChild('canvas') canvas!: ElementRef;
-
-	@Input() typeImage = '';
-	@Input() storeId = '';
-
-	@Output() eventSendPhoto = new EventEmitter();
-	@Output() cameraError = new EventEmitter();
-	@Output() closeCamera = new EventEmitter();
-	@Output() modalClose = new EventEmitter();
-
-	browser = <any>navigator;
-	cameraOn = true;
-	loading = true;
-	errorMessage: any;
-	showError = false;
-	loadingPicture = false;
-	showErrorCamera = false;
-	errorRed = '';
-	cameraPosition: any;
-	isMobile = false;
-	photoSize = { width: 635, height: 480 };
-
-	markText_comp = () => {
-		switch (this.typeImage) {
-			case 'fileImageDocumentFront':
-				return 'lbl_indication_document_front';
-			case 'fileImageDocumentBack':
-				return 'lbl_indication_document_back';
-			default:
-				return '';
-		}
+export class CarouselComponent implements AfterViewInit {
+	@ViewChild('slides') slides!: ElementRef<any>;
+	selected: number = 0;
+	minHeight: number = 318;
+	setInterval: any = null;
+	slideLength: number = 0;
+	carousel: {
+		mode: string;
+		slidemodified: number;
+		slideSeleted: number;
+		calcMaxHeihgt: number;
+		slides: Array<{
+			zIndex: number;
+			opacity: number;
+			xtrans: number;
+			scale: number;
+			ytrans: number;
+			height: number;
+			indexArray: number;
+		}>;
+	} = {
+		mode: 'oneItem',
+		slidemodified: 0,
+		slideSeleted: 0,
+		calcMaxHeihgt: 0,
+		slides: [],
 	};
 
-	constructor() {
-		this.cameraPosition = cameraPosition.environment;
+	ngAfterViewInit() {
+		this.slideLength = this.carousel.slides.length;
+		this.arrange(1);
+		this.createInterval();
 	}
 
-	public ngAfterViewInit() {
-		this.cameraPosition = this.validateDevice();
-
-		this.initCamera({
-			video: {
-				facingMode: this.cameraPosition,
-			},
-			audio: false,
-		});
-
-		this.canvas.nativeElement.width = this.photoSize.width;
-		this.canvas.nativeElement.height = this.photoSize.height;
+	createInterval() {
+		this.setInterval = setInterval(() => {
+			this.arrange(this.changeSlide());
+		}, 4000);
 	}
 
-	private initCamera(config: any) {
-		this.browser.getUserMedia =
-			this.browser.getUserMedia ||
-			this.browser.webkitGetUserMedia ||
-			this.browser.mozGetUserMedia ||
-			this.browser.msGetUserMedia;
+	changeSlide(operation: string = 'add') {
+		switch (operation) {
+			case 'add':
+				this.selected =
+					this.slideLength - 1 <= this.selected ? 0 : this.selected + 1;
+				break;
+			case 'subtract':
+				this.selected =
+					0 == this.selected ? this.slideLength - 1 : this.selected - 1;
+				break;
+		}
+		return this.selected;
+	}
 
-		if (this.browser.mediaDevices && this.browser.mediaDevices.getUserMedia) {
-			this.browser.mediaDevices.getUserMedia(config).then(
-				(stream: any) => {
-					this.showErrorCamera = false;
-					this.video.nativeElement.srcObject = stream;
-					this.video.nativeElement.play().then(() => {
-						window.dispatchEvent(new Event('resize'));
-						this.loading = false;
-					});
-				},
-				(error: any) => {
-					this.showErrorCamera = true;
-					this.eventSendPhoto.emit(false);
-					this.cameraError.emit(error);
+	removeInterval() {
+		clearInterval(this.setInterval);
+	}
+
+	_mod(n, m) {
+		return ((n % m) + m) % m;
+	}
+	listBefore(centerIndex, half) {
+		const before = [];
+		for (let i = centerIndex - 1; before.length < half; i--) {
+			before.push(this.carousel.slides[this._mod(i, this.carousel.slides.length)]);
+		}
+		return before;
+	}
+	listAfter(centerIndex, before) {
+		const after = [];
+
+		for (
+			let i = centerIndex + 1;
+			after.length < this.carousel.slides.length - before.length - 1;
+			i++
+		) {
+			after.push(this.carousel.slides[this._mod(i, this.carousel.slides.length)]);
+		}
+
+		return after;
+	}
+	arrange(centerIndex) {
+		const half = (this.carousel.slides.length - 1) / 2;
+
+		const before = this.listBefore(centerIndex, half);
+
+		const after = this.listAfter(centerIndex, before);
+
+		this.stylizeCentering(centerIndex, before, after);
+
+		this.stylizeOther(before, after);
+	}
+
+	get style() {
+		return {
+			height: this.minHeight + 'px',
+		};
+	}
+
+	saveHight(index, height) {
+		this.carousel.slides[index].height = height;
+	}
+
+	setScale(index, scale) {
+		if (this.carousel.mode === 'normal') {
+			scale = 1;
+		}
+		this.carousel.slides[index].scale = scale;
+	}
+
+	setOpacity(index, opacity) {
+		switch (this.carousel.mode) {
+			case 'oneItem':
+				opacity = opacity != 1 ? 0 : 1;
+				break;
+			case 'normal':
+				opacity = 1;
+				break;
+		}
+		this.carousel.slides[index].opacity = opacity;
+	}
+
+	setXtrans(index, xtrans) {
+		switch (this.carousel.mode) {
+			case 'normal':
+			case '3d':
+				xtrans = xtrans - 50;
+				break;
+		}
+		this.carousel.slides[index].xtrans = xtrans;
+	}
+
+	setZindex(index, zIndex) {
+		this.carousel.slides[index].zIndex = zIndex;
+	}
+
+	stylizeCentering(centerIndex, before, after) {
+		this.setXtrans(centerIndex, 0);
+		this.setOpacity(centerIndex, 1);
+		this.setScale(centerIndex, 1);
+		this.setZindex(centerIndex, Math.max(before.length, after.length) + 1);
+
+		this.carousel.slideSeleted = centerIndex;
+		this.carousel.calcMaxHeihgt = this.carousel.slides[centerIndex].height;
+	}
+
+	stylizeOther(before, after) {
+		[before, after].forEach((list, listIndex) => {
+			let parentTrans = 0;
+			let parentScale = 1;
+
+			list.forEach((item, i) => {
+				parentScale = 0.8 ** (i + 1);
+				const absolute = 105 * parentScale * 1.125 + parentTrans;
+				parentTrans = absolute;
+
+				this.setScale(item.indexArray, parentScale);
+				this.setOpacity(item.indexArray, Math.max(1 - 0.25 * (i / 2 + 1) ** 2, 0));
+				this.setXtrans(item.indexArray, (listIndex == 0 ? -1 : 1) * absolute);
+				this.setZindex(item.indexArray, Math.max(before.length, after.length) - i);
+
+				if (this.carousel.mode != 'oneItem' && this.carousel.mode != '3d') {
+					this.carousel.calcMaxHeihgt =
+						this.carousel.slides[item.indexArray].height >
+						this.carousel.calcMaxHeihgt
+							? this.carousel.slides[item.indexArray].height
+							: this.carousel.calcMaxHeihgt;
 				}
-			);
-		} else {
-			this.cameraError.emit(true);
-		}
-	}
 
-	definePosition() {
-		this.close();
-		this.cameraPosition =
-			this.cameraPosition === cameraPosition.user
-				? cameraPosition.environment
-				: cameraPosition.user;
-		this.initCamera({ video: { facingMode: this.cameraPosition }, audio: false });
-	}
-
-	public capture() {
-		this.cameraOn = false;
-		this.video.nativeElement.pause();
-
-		this.canvas.nativeElement
-			.getContext('2d')
-			.drawImage(
-				this.video.nativeElement,
-				0,
-				0,
-				this.photoSize.width,
-				this.photoSize.height
-			);
-	}
-
-	private dataURLtoFile(dataurl: any) {
-		var arr = dataurl.split(','),
-			mime = arr[0].match(/:(.*?);/)[1],
-			bstr = atob(arr[1]),
-			n = bstr.length,
-			u8arr = new Uint8Array(n);
-		while (n--) u8arr[n] = bstr.charCodeAt(n);
-		return new File([u8arr], 'filename', { type: mime });
-	}
-
-	public again() {
-		this.cameraOn = true;
-		this.video.nativeElement.play().then(() => {
-			window.dispatchEvent(new Event('resize'));
+				this.carousel.slidemodified = item.indexArray;
+			});
 		});
 	}
 
-	savePhotoUser() {
-		this.loadingPicture = true;
-		this.errorRed = 'false';
-		const data = this.canvas.nativeElement.toDataURL('image/png');
-
-		const file = this.dataURLtoFile(data);
-		this.eventSendPhoto.emit(file);
-		this.close();
-	}
-
-	close() {
-		this.closeCamera.emit(true);
-		if (this.video && this.video.nativeElement.srcObject) {
-			this.video.nativeElement.srcObject.getTracks()[0].stop();
-		}
-	}
-
-	closeError() {
-		this.loadingPicture = false;
-		this.close();
-	}
-
-	ngOnDestroy() {
-		this.close();
-	}
-
-	closeModal() {
-		this.modalClose.emit(true);
-	}
-
-	validateDevice() {
-		this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-		const dictionaryStoreId = '5e7cfb39ead1af0edcfb1241';
-
-		if (this.storeId === '' || dictionaryStoreId !== this.storeId) {
-			return cameraPosition.environment;
-		}
-
-		if (this.isMobile) {
-			return cameraPosition.user;
-		}
-
-		return cameraPosition.environment;
+	changeStylesSlides(indexSlide, dataNew) {
+		this.carousel.slides[indexSlide] = {
+			...this.carousel.slides[indexSlide],
+			...dataNew,
+		};
 	}
 }
